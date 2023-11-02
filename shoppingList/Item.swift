@@ -7,14 +7,15 @@
 
 import Foundation
 
-struct Item {
+struct Item: Codable {
     var section: FoodType
     var name: String
-    var cost: Double
+    var color: String
 }
 
-enum FoodType {
+enum FoodType: Codable {
     case produce
     case frozen
     case deli
+    case none
 }

@@ -31,27 +31,24 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6UJ-pB-dl3">
-                                                            <rect key="frame" x="0.0" y="0.0" width="393" height="20.666666666666671"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="393" height="20.666666666666668"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ziF-pI-kWy">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="296.66666666666669" height="20.666666666666668"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ziF-pI-kWy">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="20.666666666666668"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Section" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qz-vG-DYW">
-                                                                    <rect key="frame" x="296.66666666666669" y="0.0" width="57.666666666666686" height="20.666666666666668"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9L-ep-5bA">
-                                                                    <rect key="frame" x="354.33333333333331" y="0.0" width="38.666666666666686" height="20.666666666666668"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9L-ep-5bA">
+                                                                    <rect key="frame" x="196.66666666666663" y="0.0" width="196.33333333333337" height="20.666666666666668"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="m9L-ep-5bA" firstAttribute="width" secondItem="ziF-pI-kWy" secondAttribute="width" id="zzL-2R-KnO"/>
+                                                            </constraints>
                                                         </stackView>
                                                     </subviews>
                                                     <constraints>
@@ -64,9 +61,8 @@
                                                     <constraint firstItem="6UJ-pB-dl3" firstAttribute="centerX" secondItem="QmJ-Lz-2Qh" secondAttribute="centerX" id="U6k-iZ-GI2"/>
                                                 </constraints>
                                                 <connections>
+                                                    <outlet property="color_label" destination="m9L-ep-5bA" id="i4U-0g-K4J"/>
                                                     <outlet property="name_label" destination="ziF-pI-kWy" id="AQ5-G8-htZ"/>
-                                                    <outlet property="price_label" destination="m9L-ep-5bA" id="j03-7h-oFn"/>
-                                                    <outlet property="section_label" destination="8qz-vG-DYW" id="BaI-pc-BjN"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -104,6 +100,9 @@
                             <constraint firstItem="wD8-ua-4tv" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="hy3-vb-40R"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="19D-0G-KKk" id="XVa-dd-1Fc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

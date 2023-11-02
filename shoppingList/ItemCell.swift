@@ -10,6 +10,5 @@ import UIKit
 
 class ItemCell: UITableViewCell {
     @IBOutlet weak var name_label: UILabel!
-    @IBOutlet weak var price_label: UILabel!
-    @IBOutlet weak var section_label: UILabel!
+    @IBOutlet weak var color_label: UILabel!
 }
