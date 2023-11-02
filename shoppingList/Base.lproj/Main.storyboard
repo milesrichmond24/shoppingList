@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="97.666666666666686" width="393" height="681.66666666666652"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="19D-0G-KKk">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="647.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="613"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="item" id="QmJ-Lz-2Qh" customClass="ItemCell" customModule="shoppingList" customModuleProvider="target">
@@ -68,7 +68,7 @@
                                         </prototypes>
                                     </tableView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2rt-ta-gIc">
-                                        <rect key="frame" x="0.0" y="647.33333333333337" width="393" height="34.333333333333371"/>
+                                        <rect key="frame" x="0.0" y="613" width="393" height="34.333333333333371"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NCG-eV-Hnl">
                                                 <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="34.333333333333336"/>
@@ -84,6 +84,27 @@
                                                 <buttonConfiguration key="configuration" style="gray" title="Delete"/>
                                                 <connections>
                                                     <action selector="delete_actionq:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G1Y-eI-ESO"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Zi-LF-ahn">
+                                        <rect key="frame" x="0.0" y="647.33333333333337" width="393" height="34.333333333333371"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZp-wy-Ggq">
+                                                <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="34.333333333333336"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="gray" title="Sort"/>
+                                                <connections>
+                                                    <action selector="sort_action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qll-TF-goX"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sY-bd-abz">
+                                                <rect key="frame" x="196.66666666666663" y="0.0" width="196.33333333333337" height="34.333333333333336"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="gray" title="Check Off"/>
+                                                <connections>
+                                                    <action selector="check_action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jZH-hC-2qs"/>
                                                 </connections>
                                             </button>
                                         </subviews>

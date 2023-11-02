@@ -11,6 +11,7 @@ struct Item: Codable {
     var section: FoodType
     var name: String
     var color: String
+    var checked: Bool
 }
 
 enum FoodType: Codable {

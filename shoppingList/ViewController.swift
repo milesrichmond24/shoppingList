@@ -41,12 +41,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    func isDuplicate(_ item: Item) -> Bool {
+        for i in list {
+            if(i.name == item.name) {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
     //
     //
     //
 
     @IBAction func add_action(_ sender: UIButton) {
-        var item: Item = Item(section: FoodType.none, name: "Unnamed", color: "Unnamed")
+        var item: Item = Item(section: FoodType.none, name: "Unnamed", color: "Unnamed", checked: false)
         
         let alertContr = UIAlertController(title: "Add Item?", message: "", preferredStyle: .alert)
         
@@ -59,8 +69,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let add = UIAlertAction(title: "Add", style: .default) { action in
             item.name = alertContr.textFields![0].text ?? ""
             item.color = alertContr.textFields![1].text ?? ""
+            
+            if(self.isDuplicate(item)) {
+                let duplicateAlertContr = UIAlertController(title: "Error", message: "Duplicate Item", preferredStyle: .alert)
+                duplicateAlertContr.addAction(UIAlertAction(title: "Ok", style: .default))
+                self.present(duplicateAlertContr, animated: true)
+                return
+            }
+            
             self.list.append(item)
-            print("item added to list")
+            
             self.tableView.reloadData()
             self.saveData()
         }
@@ -86,6 +104,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         saveData()
     }
     
+    @IBAction func sort_action(_ sender: UIButton) {
+        list.sort(by: {$0.name > $1.name})
+        tableView.reloadData()
+    }
+    
+    @IBAction func check_action(_ sender: UIButton) {
+        
+    }
+    
     //
     //
     //
@@ -107,7 +134,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.name_label.text = item.name
         cell.color_label.text = item.color
         
+        if(item.checked) {
+            cell.name_label.textColor = UIColor.secondaryLabel
+        }
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        var item = list[indexPath.row]
+        if(editingStyle == .delete) {
+            item.checked = !item.checked
+        }
     }
 }
 
