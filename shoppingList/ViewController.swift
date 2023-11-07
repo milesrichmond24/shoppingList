@@ -94,7 +94,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func delete_actionq(_ sender: UIButton) {
-        if(selectedIndex == -1) {
+        if(selectedIndex == -1 || selectedIndex > list.count) {
             return
         }
         
@@ -110,6 +110,54 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func check_action(_ sender: UIButton) {
+        if(selectedIndex == -1 || selectedIndex > list.count) {
+            return
+        }
+        
+        list[selectedIndex].checked = !list[selectedIndex].checked
+        tableView.reloadData()
+        selectedIndex = -1
+        saveData()
+    }
+    
+    @IBAction func edit_action(_ sender: UIButton) {
+        let alertContr = UIAlertController(title: "Edit", message: "", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alertContr.addAction(cancel)
+        
+        if(selectedIndex == -1 || selectedIndex > list.count) {
+            alertContr.title = "Error"
+            alertContr.message = "No item selected"
+            
+            present(alertContr, animated: true)
+            return
+        }
+        
+        alertContr.addTextField()
+        alertContr.addTextField()
+        alertContr.textFields![0].placeholder = "Name (Leave empty if no changes)"
+        alertContr.textFields![1].placeholder = "Color (Leave empty if no changes"
+        
+    
+        
+        let save = UIAlertAction(title: "Save", style: .default) { action in
+            if(alertContr.textFields![0].text != "" && alertContr.textFields![1].text != "") {
+                self.list[self.selectedIndex].color = alertContr.textFields![1].text!
+                self.list[self.selectedIndex].name = alertContr.textFields![0].text!
+            } else if(alertContr.textFields![0].text != "") {
+                self.list[self.selectedIndex].name = alertContr.textFields![0].text!
+            } else if(alertContr.textFields![1].text != "") {
+                self.list[self.selectedIndex].color = alertContr.textFields![1].text!
+            }
+            
+            self.tableView.reloadData()
+            self.saveData()
+        }
+        
+        alertContr.addAction(save)
+        
+        present(alertContr, animated: true)
         
     }
     
@@ -135,17 +183,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.color_label.text = item.color
         
         if(item.checked) {
+            cell.color_label.textColor = UIColor.secondaryLabel
             cell.name_label.textColor = UIColor.secondaryLabel
+        } else {
+            cell.color_label.textColor = UIColor.black
+            cell.name_label.textColor = UIColor.black
         }
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        var item = list[indexPath.row]
-        if(editingStyle == .delete) {
-            item.checked = !item.checked
-        }
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        selectedIndex = indexPath.row
+        delete_actionq(nil)
     }
 }
 
